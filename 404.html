@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GoShare</title>
+    <script>
+      // GitHub Pages SPA routing fix - redirect to hash-based routing
+      // When visiting /owen or any route directly, GitHub Pages returns 404
+      // Redirect to home page with hash routing
+      const pathWithoutBase = window.location.pathname;
+      const cleanPath = pathWithoutBase.split('?')[0];
+      const baseSegments = cleanPath.split('/').filter(Boolean);
+      
+      // If we have a path segment (like 'owen' from '/owen'), redirect with hash
+      if (baseSegments.length > 0) {
+        const username = baseSegments[baseSegments.length - 1];
+        window.location.replace('/#/' + username);
+      } else {
+        window.location.replace('/');
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
